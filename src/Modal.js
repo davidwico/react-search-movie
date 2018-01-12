@@ -2,16 +2,7 @@ import React from 'react';
 import './Modal.css';
 
 const Modal = (props) => {
-    let style = {
-        visibility: props.modal,
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'rgba(168, 153, 153, 0.589)'
-    }
-    
+
     const movieDetail = props.movieDetail;
 
     //Genres
@@ -51,20 +42,20 @@ const Modal = (props) => {
     if (movieDetail !== undefined) {
         let referenceTo = movieDetail.production_companies;
         let element = undefined;
-        referenceTo.map((text, index) => {
+        referenceTo.forEach((text, index) => {
             if (index === referenceTo.length - 1) {
                 element = text.name;
-                return prodCompaniesArray.push(element)
+                prodCompaniesArray.push(element)
             } else {
                 element = text.name + ', ';
-                return prodCompaniesArray.push(element)
+                prodCompaniesArray.push(element)
             }
         });
     }
      
 
     return (
-        <div style={style} className="modal" onClick={props.closeModal}>
+        <div style={{visibility: props.modal}} className="modal-wrapper" onClick={props.closeModal}>
         {movieDetail !== undefined ?
             (
                 <div className="modal-info mui-panel">
@@ -72,7 +63,7 @@ const Modal = (props) => {
                         <span className="modal-text-bold">Genre:</span> {genresArray}
                     </p>
                     <a className="modal-link" 
-                        href={'http://www.imdb.com/title/'+movieDetail.imdb_id}>Link to movie at IMDB.com
+                        href={'https://www.imdb.com/title/'+movieDetail.imdb_id}>Link to movie at IMDB.com
                     </a>
                     <p className="modal-text modal-overview-text">
                         <span className="modal-text-bold">Description:</span> {movieDetail.overview}

@@ -7,8 +7,7 @@ class SearchMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTitle: undefined,
-      requestLink: undefined,
+      searchTitle: '',
       movies: [],
       moviesId: [],
       movieDetail: undefined,
@@ -43,36 +42,33 @@ class SearchMovie extends Component {
     if (title === undefined || title === '') {
       return
     }
-    const replace = title.split(' ').join('%20');
+    const replace = title.replace(' ', '%20');
     const reqLink = 'https://api.themoviedb.org/3/search/movie?api_key=ff38a1d81aa1ac764ffd7014470cae8d&language=en-US&query='+replace+'&page=1&include_adult=false';
-    this.setState({
-      requestLink: reqLink
-    }, () => {
-      fetch(this.state.requestLink)
-      .then(data => data.json())
-      .then((temp) => this.setState({
-          movies: temp.results,
-          sort: false
-      }))
-      .then( 
-        this.state.sort !== true ? undefined : 
-          () => {
-            const moviesArray = [...this.state.movies];
-            moviesArray.sort((a, b) => a.title.localeCompare(b.title));
-            this.setState({
-              movies: moviesArray
-            })
-          }
-      )
-      .then(() => {
-        const array = [];
-        const moviesArray = this.state.movies;
-        moviesArray.map((i, x) => {
-          return array.push(i.id)
-        });
-        this.setState({
-          moviesId: array
-        });
+
+    fetch(reqLink)
+    .then(data => data.json())
+    .then((temp) => this.setState({
+        movies: temp.results,
+        sort: false
+    }))
+    .then( 
+      this.state.sort !== true ? undefined : 
+        () => {
+          const moviesArray = [...this.state.movies];
+          moviesArray.sort((a, b) => a.title.localeCompare(b.title));
+          this.setState({
+            movies: moviesArray
+          })
+        }
+    )
+    .then(() => {
+      const array = [];
+      const moviesArray = this.state.movies;
+      moviesArray.map((i, x) => {
+        return array.push(i.id)
+      });
+      this.setState({
+        moviesId: array
       });
     });
   }
@@ -89,13 +85,11 @@ class SearchMovie extends Component {
     fetch(detailUrl)
     .then(data => data.json())
     .then(details => {
-        this.setState({
-          movieDetail: details
-        }, ()=>{
-          this.setState({
-            modal: 'visible'
-          })})
-        })
+      this.setState({
+        movieDetail: details,
+        modal: 'visible'
+      })
+    })
   }
 
 

@@ -11,8 +11,9 @@ const MovieCard = (props) => {
               const popularity = text.popularity;
               const voteCount = text.vote_count;
               const voteAverage = text.vote_average;
+              const movieId = text.id;
               return (
-                <div className="card-info mui-panel" key={index}>
+                <div className="card-info mui-panel" key={movieId}>
                     <div className="card-info-wrapper">
                         <h2 className="card-info-header"><span className="card-bold">{movieTitle}</span></h2>
                         <p className="card-info-text">Release date: {releaseDate}</p>
