@@ -1,0 +1,54 @@
+.modal-info {
+    position: relative;
+    height: auto;
+    width: 400px;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(38, 86, 218);
+    color: white;
+    padding: 60px;
+}
+
+.modal-text {
+    font-weight: 100;
+    padding: 10px;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+}
+
+.modal-link {
+    color: rgb(202, 202, 50);
+    font-size: 1.5rem;
+}
+
+.modal-overview-text {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.modal-text-bold {
+    font-weight: 300;
+}
+
+@media all and (max-width: 580px) {
+    .modal-info {
+        width: 300px;
+        padding: 45px;
+    }
+}
+
+@media all and (max-width: 450px) {
+    .modal-info {
+        width: 250px;
+        padding: 30px;
+    }
+}
+
+@media all and (max-height: 500px) {
+    .modal-info {
+        max-height: 300px;
+        overflow: auto;
+    }
+}

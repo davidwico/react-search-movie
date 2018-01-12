@@ -1,0 +1,39 @@
+.movies-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.movie-input {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 0;
+  color: #ffffff !important;
+  font-size: 2rem !important;
+}
+
+.movie-input::placeholder {
+  color: #ffffff !important;
+}
+
+.movie-content {
+  margin-top: 15px;
+}
+
+.movie-search-btn {
+  background-color: #ffffff !important;
+}
+
+.mui-textfield {
+  margin: 0;
+  padding: 0;
+}
+
+
+@media all and (min-width: 100px) and (max-width: 500px) {
+  input {
+    max-width: 200px;
+  }
+}
